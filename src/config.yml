@@ -1,0 +1,10 @@
+rules:
+# some example rules
+    world:
+        - Do not swearing
+        - Do not kidnap other people's animals
+    creative:
+        - Random build will be cleared each months
+motd:
+    joinmessage: Welcome to our server
+    pingmessage: Type /rules upon joined!
