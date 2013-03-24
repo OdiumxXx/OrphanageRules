@@ -1,7 +1,6 @@
 package virtualpain.orphanagerules;
 
-import java.text.MessageFormat;
-import java.util.Iterator;
+
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -23,13 +22,13 @@ public class OrphanageRulesExecutor implements CommandExecutor {
 			String currentWorld = player.getWorld().getName();
 			List<String> rulesThisWorld = plugin.getConfig().getStringList("rules."+currentWorld);
 			if (rulesThisWorld.isEmpty()) {
-				player.sendMessage("There are no rules in this world yet!");
+				player.sendMessage(this.plugin.getConfig().getString("messages.norules"));
 			}
 			else {
 				int number = 1;
-				player.sendMessage("Rules for world \""+currentWorld+"\"");
+				player.sendMessage(virtualpain.orphanagerules.Color.replaceString(String.format(this.plugin.getConfig().getString("messages.rulestitle"),currentWorld)));
 				for (String rule : rulesThisWorld) {
-					player.sendMessage(MessageFormat.format("{0}. {1}", number, rule));
+					player.sendMessage(String.format("%d. %s", number, rule));
 					number++;
 				}
 			}

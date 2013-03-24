@@ -6,5 +6,8 @@ rules:
     creative:
         - Random build will be cleared each months
 motd:
-    joinmessage: Welcome to our server
-    pingmessage: Type /rules upon joined!
+    joinmessage: "&2Hello &Y%s&2, welcome to &YYourServerName"
+    pingmessage: "&YType &r/rules&Y upon joined!"
+messages:
+    norules: "&2There are no rules for this world!"
+    rulestitle: "&2Rules for world &Y%s"

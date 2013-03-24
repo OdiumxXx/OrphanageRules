@@ -1,5 +1,7 @@
 package virtualpain.orphanagerules;
 
+
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -16,12 +18,12 @@ public class OrphanageRulesListener implements Listener{
 	@EventHandler
 	public void onPlayerJoined(PlayerJoinEvent event) 
 	{
-		event.getPlayer().sendMessage(this.plugin.getConfig().getString("motd.joinmessage"));
+		event.getPlayer().sendMessage(virtualpain.orphanagerules.Color.replaceString(String.format(this.plugin.getConfig().getString("motd.joinmessage"), event.getPlayer().getName())));
 	}
 	
 	@EventHandler
 	public void onPingEvent(ServerListPingEvent event)
 	{
-		event.setMotd(this.plugin.getConfig().getString("motd.pingmessage"));
+		event.setMotd(virtualpain.orphanagerules.Color.replaceString(this.plugin.getConfig().getString("motd.pingmessage")));
 	}
 }
