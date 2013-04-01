@@ -1,0 +1,9 @@
+0.0.2
+- Updated /rules command
+- Updated motd
+- Removed 'ping' confusion
+
+ToDo:
+- Issues with punctuation in rules lists -> Example 1: cannot escape ' character
+- Redo ping command
+ 

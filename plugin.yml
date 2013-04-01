@@ -1,0 +1,13 @@
+name: OrphanageRules
+main: virtualpain.orphanagerules.OrphanageRules
+description: Display rules for each world
+version: 0.0.2
+commands:
+   rules:
+      description: Show rules of current world
+      usage: /rules
+      permission: OrphanageRules.rules
+   motd:
+      description: Show Message of The Day
+      usage: /motd
+      permission: OrphanageRules.motd

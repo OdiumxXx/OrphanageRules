@@ -1,0 +1,19 @@
+# &0 = Black  |  &1 = DarkGray
+# &2 = GRAY   |  &w = White
+# &r = Red    |  &R = DarkRed
+# &y = YELLOW |  &Y = Gold
+# &g = Green  |  &G = DarkGreen
+# &c = Cyan   |  &C = DarkCyan
+# &b = Blue   |  &B = DarkBlue
+# &p = Purple |  &P = DarkPurple
+rules:
+  default:
+  - ' &gThese are the default rules'
+  - ' &gThese are the default rules ln2'
+  world:
+  - ' &cDo not swearing'
+  - ' &rDo not kidnap other peoples animals'
+motd:
+- '&2Hello, &Y%player&2. Welcome to &YThe Orphanage.'
+- '&2[&Chttp://Orphanage.DynDNS.info&2]'
+- '&r*** Please read the rules by typing &g/rules &r***'
