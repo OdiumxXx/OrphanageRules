@@ -1,9 +1,16 @@
 0.0.2
 - Updated /rules command
 - Updated motd
+- Added '/rules reload' command for reloading config
+- Added permission for /rules (OrphanageRules.rules)
 - Removed 'ping' confusion
-
+- Moved config.yml & plugin.yml
+0.0.3
+- Updated rules from string list to string
+- Added increasing digits to rules output
+- Added extra formatting to colour macros.
 ToDo:
-- Issues with punctuation in rules lists -> Example 1: cannot escape ' character
+- Add /motd
 - Redo ping command
+ 
  

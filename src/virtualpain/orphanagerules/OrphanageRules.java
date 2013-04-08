@@ -1,5 +1,6 @@
 package virtualpain.orphanagerules;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
@@ -19,9 +20,14 @@ public class OrphanageRules extends JavaPlugin {
     // Load Config.yml
     FileConfiguration cfg = getConfig();
     FileConfigurationOptions cfgOptions = cfg.options();
+    
+    File f = new File(getDataFolder().getAbsolutePath()+File.separator+"config.yml");
+    if(!f.exists()) {    
     cfgOptions.copyDefaults(true);
     cfgOptions.copyHeader(true);
     saveConfig();
+    }
+    
     // declare new listener
     new OrphanageRulesListener(this);
     // Declare Command Executor
@@ -49,11 +55,11 @@ public class OrphanageRules extends JavaPlugin {
     str = str.replace("&1", ChatColor.DARK_GRAY.toString());
     str = str.replace("&2", ChatColor.GRAY.toString());
     str = str.replace("&w", ChatColor.WHITE.toString());
-    str = str.replace("&bold", ChatColor.BOLD.toString());
-    str = str.replace("&italic", ChatColor.ITALIC.toString());
-    str = str.replace("&underline", ChatColor.UNDERLINE.toString());
-    str = str.replace("&strike", ChatColor.STRIKETHROUGH.toString());
-    str = str.replace("&reset", ChatColor.RESET.toString());    
+    str = str.replace("%bold", ChatColor.BOLD.toString());
+    str = str.replace("%italic", ChatColor.ITALIC.toString());
+    str = str.replace("%underline", ChatColor.UNDERLINE.toString());
+    str = str.replace("%strike", ChatColor.STRIKETHROUGH.toString());
+    str = str.replace("%reset", ChatColor.RESET.toString());    
     return str;
   }
   

@@ -1,7 +1,5 @@
 package virtualpain.orphanagerules.commands;
 
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,30 +20,42 @@ public class rules implements CommandExecutor {
     if (sender instanceof Player) {
       player = (Player) sender;
     } 
-    List<String> rules;
+    String rules;
+    int i = 1;
 
     if (args.length == 0) {
       // IF PLAYER IS CONSOLE
       if (player == null) {
-        rules = plugin.getConfig().getStringList("rules.default");
-        for (String rule : rules) {
-          sender.sendMessage(plugin.replaceColorMacros(rule));  
+        rules = plugin.getConfig().getString("rules.default");
+        for (String rule : rules.split("\n")) {
+          sender.sendMessage(plugin.replaceColorMacros(rule).replaceAll("[\r\n]", "").replaceAll("&#",""+i));
+          if (rule.contains("&#")) {
+            i++;
+          }
         }
+
         return true;
       }
 
-      String World_Name = player.getWorld().getName();
-      rules = plugin.getConfig().getStringList("rules."+World_Name);
+      // IF PLAYER IS IN-GAME
+      String worldName = player.getWorld().getName();
+      rules = plugin.getConfig().getString("rules."+worldName);
 
-      if (rules.isEmpty()) {
-        rules = plugin.getConfig().getStringList("rules.default");
-        plugin.log.info("rules are null");
+      // IF THERE ARE NO RULES SET FOR THIS WORLD
+      if (rules == null) {
+        rules = plugin.getConfig().getString("rules.default"); // USE DEFAULT RULES
       }
 
-      for (String rule : rules) {
-        player.sendMessage(plugin.replaceColorMacros(rule));  
+      // DISPLAY RULES
+      for (String rule : rules.split("\n")) {
+        player.sendMessage(plugin.replaceColorMacros(rule).replaceAll("[\r\n]", "").replaceAll("&#",""+i));
+        if (rule.contains("&#")) {
+          i++;
+        }
       }
+      i = 1;
       return true;
+
     } else if(args.length == 1 & args[0].equalsIgnoreCase("reload")) {
       plugin.reloadConfig();
       sender.sendMessage(ChatColor.GREEN+"OrphanageRules Config Reloaded!");
